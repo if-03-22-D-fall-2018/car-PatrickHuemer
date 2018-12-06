@@ -23,7 +23,7 @@
 TEST(get_first_aixam)
 {
 	Car car1 = get_car(AIXAM);
-	ASSERT_FALSE(car1 == 0, "Must get the first Axiam");
+	ASSERT_FALSE(car1 == 0, "Must get the first Aixam");
 	ASSERT_EQUALS(AIXAM, get_type(car1));
 	ASSERT_EQUALS(RED, get_color(car1));
 	ASSERT_EQUALS(16.0, get_fill_level(car1));
