@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 struct CarImplementation{
-  int speed;
+  double speed;
   int max_speed;
   enum Color color;
   enum Type type;
@@ -33,16 +33,19 @@ Car get_car(enum Type type){
 }
 void set_acceleration_rate(Car car,double acceleration_rate){
   if (acceleration_rate > car->highest_acceleration_rate) {
-    car->acceleration_rate = acceleration_rate;
+    car->acceleration_rate = car->highest_acceleration_rate;
   }
   else if (acceleration_rate < car->lowest_acceleration_rate) {
-    car->acceleration_rate = acceleration_rate;
+    car->acceleration_rate = car->lowest_acceleration_rate;
   }
   else{
     car->acceleration_rate = acceleration_rate;
   }
 }
 int get_speed(Car car){
+  if (car->speed - (int)car->speed > 0.5) {
+    car->speed ++;
+  }
   return car->speed;
 }
 enum Color get_color(Car car){
@@ -66,7 +69,7 @@ double get_acceleration_rate(Car car){
   return car->acceleration_rate;
 }
 void accelerate(Car car){
-  double speed = car->acceleration_rate * 4;
+  double speed = car->acceleration_rate * 3.6;
   if (car->max_speed >= speed + car->speed) {
     car->speed += speed;
   }
